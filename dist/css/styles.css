@@ -1,0 +1,53 @@
+.white{
+  background-color: white;
+}
+.silver{
+  background-color: silver;
+}
+#board{
+  border: solid 1px black;
+  width: 80vw;
+  height: 80vw;
+}
+.cell{
+  display: inline-block;
+  width: 10vw;
+  height: 10vw;
+  font-size: 7vw;
+  text-align: center;
+  vertical-align: middle;
+  cursor: default;
+}
+.row{
+  height: 10vw;
+}
+.highlight {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px transparent;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: box-shadow;
+  transition-property: box-shadow;
+  box-shadow: inset 0 0 0 4px yellow, 0 0 1px transparent;
+}
+.highlight:hover, .highlight:focus, .highlight:active {
+  box-shadow: inset 0 0 0 4px #2098D1, 0 0 1px transparent;
+}
+.highlight-select {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px transparent;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: box-shadow;
+  transition-property: box-shadow;
+  box-shadow: inset 0 0 0 4px #2098D1, 0 0 1px transparent;
+}
+.highlight-select:hover, .highlight-select:focus, .highlight-select:active {
+  box-shadow: inset 0 0 0 4px transparent, 0 0 1px transparent;
+}
