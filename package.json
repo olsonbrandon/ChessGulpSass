@@ -1,8 +1,10 @@
+// run npm init to create our package.json then run npm install gulp --save-dev to install gulp then install bower by running bower init
+
 {
   "name": "ChessGulpSass",
   "version": "1.0.0",
   "description": "Recreating my chess project so I can practice using Gulp,Sass,Bower and Node.",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -21,11 +23,10 @@
     "del": "^2.2.2",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.0",
-    "gulp-livereload": "^3.8.1",
-    "gulp-open": "^2.0.0",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.3.2",
     "gulp-sourcemaps": "^2.2.0",
-    "gulp-uglify": "^2.0.0"
+    "gulp-uglify": "^2.0.0",
+    "gulp-webserver": "^0.9.1"
   }
 }

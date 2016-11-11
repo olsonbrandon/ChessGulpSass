@@ -4,9 +4,8 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     sass = require('gulp-sass'),
     maps = require('gulp-sourcemaps'),
-    open = require('gulp-open'),
-    livereload = require('gulp-livereload'),
-    del = require('del');
+    del = require('del'),
+    webserver = require('gulp-webserver');
 
 // gulp.task('task-name', function(){
 //   stuff here
@@ -33,8 +32,7 @@ gulp.task('compileSass', function(){
   .pipe(maps.init())
   .pipe(sass())
   .pipe(maps.write('./'))
-  .pipe(gulp.dest('src/css'))
-  .pipe(livereload());
+  .pipe(gulp.dest('src/css'));
 });
 
 gulp.task('moveHtml', function(){
@@ -47,13 +45,11 @@ gulp.task('moveCss', function(){
   .pipe(gulp.dest('dist/css'));
 });
 
-gulp.task('open', ['moveCss', 'moveHtml', 'compileSass', 'uglifyScripts', 'build'], function(){
-  return gulp.src('dist/index.html')
-  .pipe(open())
-  .pipe(livereload({
-    reloadPage: 'index.html',
-    host: '127.0.0.1',
-    port: '8080'
+gulp.task('webserver', function(){
+  return gulp.src('dist')
+  .pipe(webserver({
+    livereload: true,
+    open: true,
   }));
 });
 
@@ -65,10 +61,9 @@ gulp.task('clearTempJs', function(){
 });
 
 gulp.task('watch', function(){
-  livereload.listen();
   gulp.watch(['src/js/**.js', 'src/scss/**.scss'], ['uglifyScripts', 'compileSass']);
 });
 
-gulp.task('build', ['uglifyScripts', 'clearTempJs', 'compileSass', 'moveCss', 'watch']);
+gulp.task('build', ['uglifyScripts', 'clearTempJs', 'compileSass', 'moveCss','moveHtml', 'watch']);
 
-gulp.task('default', ['build', 'open']);
+gulp.task('default', ['build', 'webserver']);
